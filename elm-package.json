@@ -1,5 +1,5 @@
 {
-    "version": "1.0.0",
+    "version": "1.0.1",
     "summary": "Conversions from and to HCL color space",
     "repository": "https://github.com/Janiczek/color-hcl.git",
     "license": "BSD3",
