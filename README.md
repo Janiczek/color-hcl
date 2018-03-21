@@ -6,6 +6,6 @@ This package deals with that (conversion from/to RGB and the core `Color` type).
 
 ## Example
 
-![Distinct colors for saturation 0.7 and lightness 0.8](https://github.com/Janiczek/distinct-colors/raw/master/doc/colors.png)
+![Distinct colors for saturation 0.7 and lightness 0.8](https://github.com/Janiczek/color-hcl/raw/master/doc/colors.png)
 
 These colors have been generated for chroma `70` and luminance `80`.
