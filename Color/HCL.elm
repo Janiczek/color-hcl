@@ -1,4 +1,4 @@
-module Color.Hcl exposing (HCL, RGB, fromColor, hclToRgb, rgbToHcl, toColor)
+module Color.HCL exposing (HCL, RGB, fromColor, hclToRgb, rgbToHcl, toColor)
 
 {-| Functions for conversion from and to HCL.
 
@@ -29,10 +29,10 @@ import Color exposing (Color)
 
 Ranges:
 
-  - h: 0..360
-  - c: 0..100
-  - l: 0..150
-  - a: 0..1
+  - hue: `0..360`
+  - chroma: `0..1`
+  - lightness: `0..1`
+  - alpha: `0..1`
 
 See this color picker: <https://bl.ocks.org/mbostock/3e115519a1b495e0bd95>
 
@@ -96,13 +96,19 @@ hclToLab { hue, chroma, luminance, alpha } =
         hueRadians =
             degrees hue
 
+        chromaInRange =
+            chroma * 100
+
+        luminanceInRange =
+            luminance * 150
+
         a =
-            cos hueRadians * chroma
+            cos hueRadians * chromaInRange
 
         b =
-            sin hueRadians * chroma
+            sin hueRadians * chromaInRange
     in
-    { l = luminance
+    { l = luminanceInRange
     , a = a
     , b = b
     , alpha = alpha
@@ -260,23 +266,20 @@ labToHcl { l, a, b, alpha } =
             0 / 0
 
         hue =
-            atan2 b a
-                |> Basics.Extra.inDegrees
-                |> floatMod 360
-
-        hueFinal =
             if round (chroma * 10000) == 0 then
                 nan
             else
-                hue
+                atan2 b a
+                    |> Basics.Extra.inDegrees
+                    |> floatMod 360
 
         chroma =
-            sqrt (a * a + b * b)
+            sqrt (a * a + b * b) / 100
 
         luminance =
-            l
+            l / 150
     in
-    { hue = hueFinal
+    { hue = hue
     , chroma = chroma
     , luminance = luminance
     , alpha = alpha

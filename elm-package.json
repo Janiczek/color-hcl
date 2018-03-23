@@ -1,5 +1,5 @@
 {
-    "version": "1.0.1",
+    "version": "2.0.0",
     "summary": "Conversions from and to HCL color space",
     "repository": "https://github.com/Janiczek/color-hcl.git",
     "license": "BSD3",
@@ -7,10 +7,10 @@
         "."
     ],
     "exposed-modules": [
-        "Color.Hcl"
+        "Color.HCL"
     ],
     "dependencies": {
-        "elm-community/basics-extra": "2.2.0 <= v < 3.0.0",
+        "elm-community/basics-extra": "3.0.1 <= v < 4.0.0",
         "elm-lang/core": "5.1.1 <= v < 6.0.0",
         "elm-lang/html": "2.0.0 <= v < 3.0.0"
     },
